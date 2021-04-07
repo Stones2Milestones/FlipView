@@ -1,0 +1,31 @@
+apply plugin: 'com.android.application'
+
+repositories {
+    mavenCentral()
+}
+dependencies {
+    implementation project(':library')
+//    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+}
+
+android {
+    defaultConfig {
+        minSdkVersion 19
+        compileSdkVersion 30
+        buildToolsVersion '30.0.2'
+        multiDexEnabled true
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src']
+            res.srcDirs = ['res']
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
